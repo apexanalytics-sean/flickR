@@ -7,8 +7,10 @@
 #
 #path <- 'C:\\Users\\SeanMcNally\\OneDrive - MacAnalytics Limited\\Documents\\Workspaces\\flickR\\sample_file.csv'
 
-overwrite = FALSE
-append = FALSE
+#overwrite = TRUE
+#append = FALSE
+#odbc = 'localhost'
+path <- '.\\sample_file.csv'
 
 flick_adhoc_csv  <- function(path, overwrite, append, odbc) {
 df <- read.csv(path)
@@ -23,4 +25,5 @@ dbWriteTable(con, Id(schema = "stage", table = file_name), df, overwrite = overw
 rows <- dbGetQuery(con, statement = paste0("select count(*) from stage.", file_name, '')) ## want to query the number of records that were loaded and to what table / DB / Server
 confmsg  <- paste0('File Loaded Successfully. ', rows, ' rows were loaded to the stage.', file_name, ' using the ', odbc, ' ODBC connector')
 print(confmsg)
+dbDisconnect(con)
 }
