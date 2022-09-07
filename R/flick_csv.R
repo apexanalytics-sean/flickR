@@ -1,4 +1,4 @@
-#' flick_adhoc_csv
+#' flick_csv
 #'
 #' Load any single CSV file to a SQL table in the specified schema of the
 #' database / server specified in the ODBC connector.
@@ -16,7 +16,7 @@
 #' @param overwrite Overwrite existing table
 #' @param append Append data to table
 
-flick_adhoc_csv  <- function(file_path, odbc, schema, overwrite, append) {
+flick_csv  <- function(file_path, odbc, schema, overwrite, append) {
   df <- read.csv(file_path)
   file_name_path <- strsplit(file_path, split = '\\', fixed = TRUE)
   file_name <- tail(file_name_path[[1]], 1)
