@@ -2,7 +2,7 @@
 % Please edit documentation in R/flick_adhoc_csv.r
 \name{flick_adhoc_csv}
 \alias{flick_adhoc_csv}
-\title{flick_adhoc_csv!}
+\title{flick_adhoc_csv}
 \usage{
 flick_adhoc_csv(file_path, odbc, schema, overwrite, append)
 }
@@ -18,11 +18,11 @@ flick_adhoc_csv(file_path, odbc, schema, overwrite, append)
 \item{append}{Append data to table}
 }
 \description{
-Load any single CSV file to a SQL table in the stage schema of the
+Load any single CSV file to a SQL table in the specified schema of the
 database / server specified in the ODBC connector.
 }
 \details{
 The table name assigned is the file name.
-An ODBC connector must be setup, and a schema called 'stage' must
-be created in the destination database
+An ODBC connector must be setup, and the schema passed to the schema
+parameter must exist in the destination database
 }

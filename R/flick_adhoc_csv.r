@@ -1,11 +1,11 @@
-#' flick_adhoc_csv!
+#' flick_adhoc_csv
 #'
-#' Load any single CSV file to a SQL table in the stage schema of the
+#' Load any single CSV file to a SQL table in the specified schema of the
 #' database / server specified in the ODBC connector.
 #'
 #' The table name assigned is the file name.
-#' An ODBC connector must be setup, and a schema called 'stage' must
-#' be created in the destination database
+#' An ODBC connector must be setup, and the schema passed to the schema
+#' parameter must exist in the destination database
 #' @export
 #' @import DBI
 #' @import odbc
@@ -24,7 +24,7 @@ flick_adhoc_csv  <- function(file_path, odbc, schema, overwrite, append) {
   df$file_name <- file_name
   con <- dbConnect(odbc(), odbc)
   options(scipen=999)
-    {dbWriteTable(con, Id(schema = schema, table = file_name), df, overwrite = overwrite, append = append)}
+  dbWriteTable(con, Id(schema = schema, table = file_name), df, overwrite = overwrite, append = append)
   rows <- dbGetQuery(con, statement = paste0("select count(*) from stage.", file_name, '')) ## want to query the number of records that were loaded and to what table / DB / Server
   confmsg  <- paste0('File Loaded Successfully. ', rows, ' rows were loaded to the ', schema, '.', file_name, ' using the ', odbc, ' ODBC connector')
   print(confmsg)
