@@ -6,8 +6,8 @@ Author: Sean McNally
 Maintainer: Sean McNally <sean@macanalytics.ie>
 Description: More about what it does (maybe more than one line)
     Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+License: Proprietary. Do not distribute outside of MacAnalytics.
 Encoding: UTF-8
 LazyData: true
-Imports: DBI, dplyr, odbc
+Imports: DBI, dplyr, odbc, utils
 RoxygenNote: 7.2.1
