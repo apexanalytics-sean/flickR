@@ -22,15 +22,16 @@ flick_csv_folder(file_path, odbc, schema, overwrite, append)
 \item{folder}{Path to the folder of files you want to load}
 }
 \description{
-Load any single CSV file to a SQL table in the specified schema of the
-database / server specified in the ODBC connector.
+Load any folder of  CSV files to a SQL table in the specified schema of the
+database / server specified in the ODBC connector. All files must be the same structure
 
 Load any single CSV file to a SQL table in the specified schema of the
 database / server specified in the ODBC connector.
 }
 \details{
-The table name assigned is the file name.
-An ODBC connector must be setup, and the schema passed to the schema
+The table name assigned is the file name. of the first file loaded. The file names are also
+written to the table
+An ODBC connector must be setup, and the schema that is  passed to the schema
 parameter must exist in the destination database
 
 The table name assigned is the file name.
