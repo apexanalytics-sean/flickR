@@ -16,7 +16,7 @@
 #' @param overwrite Overwrite existing table
 #' @param append Append data to table
 
-flick_csv  <- function(file_path, odbc, schema, overwrite, append) {
+flick_csv  <- function(file_path, odbc, tablename, schema, overwrite, append) {
   df <- read.csv(file_path)
   file_name_path <- strsplit(file_path, split = '\\', fixed = TRUE)
   file_name <- tail(file_name_path[[1]], 1)
@@ -24,9 +24,9 @@ flick_csv  <- function(file_path, odbc, schema, overwrite, append) {
   df$file_name <- file_name
   con <- dbConnect(odbc(), odbc)
   options(scipen=999)
-  dbWriteTable(con, Id(schema = schema, table = file_name), df, overwrite = overwrite, append = append)
-  rows <- dbGetQuery(con, statement = paste0("select count(*) from stage.", file_name, '')) ## want to query the number of records that were loaded and to what table / DB / Server
-  confmsg  <- paste0('File Loaded Successfully. ', rows, ' rows were loaded to the ', schema, '.', file_name, ' using the ', odbc, ' ODBC connector')
+  dbWriteTable(con, Id(schema = schema, table = tablename), df, overwrite = overwrite, append = append)
+  rows <- dbGetQuery(con, statement = paste0("select count(*) from stage.", tablename, '')) ## want to query the number of records that were loaded and to what table / DB / Server
+  confmsg  <- paste0('File Loaded Successfully. ', rows, ' rows were loaded to the ', schema, '.', tablename, ' using the ', odbc, ' ODBC connector')
   print(confmsg)
   dbDisconnect(con)
 }
