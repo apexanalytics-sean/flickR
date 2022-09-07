@@ -25,8 +25,8 @@ flick_csv  <- function(file_path, odbc, tablename, schema, overwrite, append) {
   con <- dbConnect(odbc(), odbc)
   options(scipen=999)
   dbWriteTable(con, Id(schema = schema, table = tablename), df, overwrite = overwrite, append = append)
-  rows <- dbGetQuery(con, statement = paste0("select count(*) from stage.", tablename, '')) ## want to query the number of records that were loaded and to what table / DB / Server
-  confmsg  <- paste0('File Loaded Successfully. ', rows, ' rows were loaded to the ', schema, '.', tablename, ' using the ', odbc, ' ODBC connector')
+  rows <- dbGetQuery(con, statement = paste0("select count(*) from", schema,'.', tablename, '')) ## want to query the number of records that were loaded and to what table / DB / Server
+  confmsg  <- paste0(file_name, ' File Loaded Successfully. ', rows, ' rows have been loaded to the ', schema, '.', tablename, ' using the ', odbc, ' ODBC connector')
   print(confmsg)
   dbDisconnect(con)
 }
