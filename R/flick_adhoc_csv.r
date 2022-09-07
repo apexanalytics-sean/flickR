@@ -9,13 +9,13 @@
 #' @param odbc ODBC connector containing destination database details
 #' @param overwrite Overwrite existing table
 #' @param append Append data to table
-flick_adhoc_csv  <- function(path, odbc, overwrite, append) {
-  df <- read.csv(path)
-  file_name_path <- strsplit(path, split = '\\', fixed = TRUE)
+flick_adhoc_csv  <- function(file_path, odbc, overwrite, append) {
+  df <- read.csv(file_path)
+  file_name_path <- strsplit(file_path, split = '\\', fixed = TRUE)
   file_name <- tail(file_name_path[[1]], 1)
   file_name <- gsub(".csv", "", file_name)
   df$file_name <- file_name
-  odbc <- 'localhost'
+  #odbc <- 'localhost'
   con <- dbConnect(odbc(), odbc)
   options(scipen=999)
   dbWriteTable(con, Id(schema = "stage", table = file_name), df, overwrite = overwrite, append = append)
