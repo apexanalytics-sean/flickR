@@ -1,32 +1,34 @@
 #' flick_csv_folder
 #'
-#' Load any single CSV file to a SQL table in the specified schema of the
-#' database / server specified in the ODBC connector.
+#' Load any folder of  CSV files to a SQL table in the specified schema of the
+#' database / server specified in the ODBC connector. All files must be the same structure
 #'
-#' The table name assigned is the file name.
-#' An ODBC connector must be setup, and the schema passed to the schema
+#' The table name assigned is the file name. of the first file loaded. The file names are also
+#' written to the table
+#' An ODBC connector must be setup, and the schema that is  passed to the schema
 #' parameter must exist in the destination database
 #' @export
 #' @import DBI
 #' @import odbc
 #' @import utils
-#' @param file_path Path to the file you want to load
+#' @param folder Path to the folder of files you want to load
 #' @param odbc ODBC connector containing destination database details
 #' @param schema Schema in the destination database that you want to load the data to
 #' @param overwrite Overwrite existing table
 #' @param append Append data to table
 
-flick_csv_folder  <- function(file_path, odbc, schema, overwrite, append) {
-#  df <- read.csv(file_path)
-#  file_name_path <- strsplit(file_path, split = '\\', fixed = TRUE)
-#  file_name <- tail(file_name_path[[1]], 1)
-#  file_name <- gsub(".csv", "", file_name)
-#  df$file_name <- file_name
-#  con <- dbConnect(odbc(), odbc)
-#  options(scipen=999)
-#  dbWriteTable(con, Id(schema = schema, table = file_name), df, overwrite = overwrite, append = append)
-#  rows <- dbGetQuery(con, statement = paste0("select count(*) from stage.", file_name, '')) ## want to query the number of records that were loaded and to what table / DB / Server
-#  confmsg  <- paste0('File Loaded Successfully. ', rows, ' rows were loaded to the ', schema, '.', file_name, ' using the ', odbc, ' ODBC connector')
-#  print(confmsg)
-#  dbDisconnect(con)
+flick_csv_folder  <- function(folder, odbc, tablename, schema) {
+  files_in_folder <- as.data.frame(list.files(folder))
+  path1 <- paste0(folder,'\\',files_in_folder[1,])
+  flick_csv(file_path = path1, odbc = 'localhost', tablename = 'sample_file', overwrite = TRUE, append = FALSE, schema = schema)
+  files_in_folder <- files_in_folder[-1,]
+  files_in_folder <- as.data.frame(files_in_folder)
+  files_in_folder$folder <- folder
+  files_in_folder$path <- paste0(files_in_folder$folder, '\\', files_in_folder$files_in_folder)
+  files_to_load <- as.data.frame(files_in_folder$path)
+  for (i in 1:nrow(files_to_load)) {
+    print('File Started')
+    flick_csv(file_path = files_to_load[i,], odbc = 'localhost', tablename = 'sample_file', schema = schema, overwrite = FALSE, append = TRUE)
+    #paste0('File Load Done. ', files_to_load[i,], ' loaded successfully')
+     }
 }
