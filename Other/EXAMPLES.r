@@ -1,6 +1,7 @@
 # load the sample_file.csv to a SQL table in the localhost DB using the localhost ODBC connector, overwriting the previous table version
 #rm(list=ls())
 
+#file_path <- '.\\Other\\sample_csv\\sample_file.csv'
 #folder <- '.\\Other\\sample_csv'
 #odbc <- 'localhost'
 #tablename <- 'sample_file'
