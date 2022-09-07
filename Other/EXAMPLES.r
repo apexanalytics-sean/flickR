@@ -2,4 +2,4 @@
 
 #library(devtools)
 #install_github("apexanalytics/flickR")
-#flick_adhoc_csv(file_path = '.\\sample_file.csv', odbc = 'localhost', overwrite = TRUE, append = FALSE, schema = 'stage')
+#flick_adhoc_csv(file_path = '.\\Other\\sample_file.csv', odbc = 'localhost', overwrite = TRUE, append = FALSE, schema = 'stage')
