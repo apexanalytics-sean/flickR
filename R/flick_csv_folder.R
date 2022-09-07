@@ -30,5 +30,7 @@ flick_csv_folder  <- function(folder, odbc, tablename, schema) {
     print('File Started')
     flick_csv(file_path = files_to_load[i,], odbc = 'localhost', tablename = tablename, schema = schema, overwrite = FALSE, append = TRUE)
     #paste0('File Load Done. ', files_to_load[i,], ' loaded successfully')
-     }
+  }
+    file_cnt <- nrow(files_to_load) + 1
+    print(file_cnt, 'files loaded successfully.')
 }
