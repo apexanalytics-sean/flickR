@@ -7,6 +7,7 @@
 #tablename <- 'sample_file'
 #schema <- 'stage'
 #file_type_code <- 'test'
+#path <- '.\\Other\\sample_csv'
 
 #library(devtools)
 #install_github("apexanalytics/flickR")
