@@ -11,6 +11,8 @@ flick_csv(file_path, odbc, tablename, schema, overwrite, append)
 
 \item{odbc}{ODBC connector containing destination database details}
 
+\item{tablename}{Table in the destination database that you want to load the data to}
+
 \item{schema}{Schema in the destination database that you want to load the data to}
 
 \item{overwrite}{Overwrite existing table}

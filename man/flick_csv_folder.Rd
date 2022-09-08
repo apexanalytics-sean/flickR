@@ -11,11 +11,9 @@ flick_csv_folder(folder, odbc, tablename, schema)
 
 \item{odbc}{ODBC connector containing destination database details}
 
+\item{tablename}{Table in the destination database that you want to load the data to}
+
 \item{schema}{Schema in the destination database that you want to load the data to}
-
-\item{overwrite}{Overwrite existing table}
-
-\item{append}{Append data to table}
 }
 \description{
 Load any folder of  CSV files to a SQL table in the specified schema of the

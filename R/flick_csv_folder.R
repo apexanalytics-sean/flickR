@@ -13,9 +13,8 @@
 #' @import utils
 #' @param folder Path to the folder of files you want to load
 #' @param odbc ODBC connector containing destination database details
+#' @param tablename Table in the destination database that you want to load the data to
 #' @param schema Schema in the destination database that you want to load the data to
-#' @param overwrite Overwrite existing table
-#' @param append Append data to table
 
 flick_csv_folder  <- function(folder, odbc, tablename, schema) {
   files_in_folder <- as.data.frame(list.files(folder))

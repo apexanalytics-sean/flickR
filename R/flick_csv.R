@@ -12,6 +12,7 @@
 #' @import utils
 #' @param file_path Path to the file you want to load
 #' @param odbc ODBC connector containing destination database details
+#' @param tablename Table in the destination database that you want to load the data to
 #' @param schema Schema in the destination database that you want to load the data to
 #' @param overwrite Overwrite existing table
 #' @param append Append data to table
