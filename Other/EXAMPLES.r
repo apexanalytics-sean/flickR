@@ -6,6 +6,7 @@
 #odbc <- 'localhost'
 #tablename <- 'sample_file'
 #schema <- 'stage'
+#file_type_code <- 'test'
 
 #library(devtools)
 #install_github("apexanalytics/flickR")
