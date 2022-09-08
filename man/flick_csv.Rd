@@ -4,7 +4,7 @@
 \alias{flick_csv}
 \title{flick_csv}
 \usage{
-flick_csv(file_path, odbc, schema, overwrite, append)
+flick_csv(file_path, odbc, tablename, schema, overwrite, append)
 }
 \arguments{
 \item{file_path}{Path to the file you want to load}
