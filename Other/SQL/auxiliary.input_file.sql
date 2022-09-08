@@ -12,6 +12,7 @@ CREATE TABLE auxiliary.input_file (
 	id int not null,
 	file_type_code [varchar](255) NOT NULL,
 	file_status int,
+	file_hash [varchar](255) NOT NULL,
 	[date_added] DATETIME NOT NULL DEFAULT (GETDATE()),
 	[date_loaded] DATETIME, 
 	[message] [varchar](255) NOT NULL,
