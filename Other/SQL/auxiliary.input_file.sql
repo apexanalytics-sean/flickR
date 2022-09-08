@@ -15,7 +15,7 @@ CREATE TABLE auxiliary.input_file (
 	file_hash [varchar](255) NOT NULL,
 	[date_added] DATETIME NOT NULL DEFAULT (GETDATE()),
 	[date_loaded] DATETIME, 
-	[message] [varchar](255) NOT NULL,
+	[message] [varchar](255),
 	[type_code_used] [varchar](5) NOT NULL
 	PRIMARY KEY (id)
 ) ON [PRIMARY]
