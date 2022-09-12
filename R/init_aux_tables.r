@@ -14,6 +14,7 @@
 
 init_aux_tables  <- function(odbc) {
   con <- dbConnect(odbc(), odbc)
+  ## do I want to create auxiliary schema if it doesn't exist as well???
 print('Creating input_file table')
   dbSendQuery(con, "
 CREATE TABLE auxiliary.input_file (
